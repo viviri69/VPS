@@ -101,10 +101,10 @@ room.onPlayerBallKick = function(player) {
 	  else {
 	  crossingLine = false;
 	  if(lastTeamTouched == Team.RED){
-		  room.sendAnnouncement("BLUE (BAD THROW-IN)",null); 
+		  room.sendAnnouncement("BLUE (BAD THROW-IN)"); 
 		  }
 	  else if (lastTeamTouched == Team.BLUE ) { 
-	  room.sendAnnouncement("RED (BAD THROW-IN)",null);
+	  room.sendAnnouncement("RED (BAD THROW-IN)");
 	  }
 	  }
 	  isThrow = false;
@@ -210,8 +210,8 @@ function checkBallPosition() {
 				chat("CK");
 				ballPos = Ball.CKblue;
 			} else {
-			if(lastTeamTouched == Team.RED) room.sendAnnouncement("B",null);
-				else if (lastTeamTouched == Team.BLUE ) room.sendAnnouncement("R",null);
+			if(lastTeamTouched == Team.RED) room.sendAnnouncement("B");
+				else if (lastTeamTouched == Team.BLUE ) room.sendAnnouncement("R");
 				ballPos = lastTeamTouched == Team.RED ? Ball.BLUE : Ball.RED;
 				isThrow = true;
 			
@@ -266,7 +266,7 @@ room.onGameTick = function() {
 			sound: 2
 		});
 		killTimeout = setTimeout(function() {
-            chat("LAST ACTION",{
+            chat("LAST",{
 			target: null,
 			color: null,
 			style: "bold",
@@ -390,7 +390,7 @@ room.onPlayerChat = function(playerChat, message) {
 	} 
 	if (message === "!swap" && playerChat.admin) {
 		swap();
-		chat("Teams swapped 🔃");
+		chat("Teams swapped");
 		return false;
 	} else if (player.admin == true && message.substr(0, 5) == "!mute" ){
         if (!(mutedPlayers.includes(message.substr(6)))) mutedPlayers.push(message.substr(6));
